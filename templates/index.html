@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DASS-21 Adaptive Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-bg"></div>
+
+<div class="container card start-card">
+    <div class="pill-label">
+        Mental health self‑check
+    </div>
+
+    <div class="header">
+        <h1>Smart Mental Health Check 💙</h1>
+        <p class="subtitle">
+            A guided check‑in for <b>stress, anxiety, and depression</b> based on the DASS‑21 questionnaire.
+        </p>
+    </div>
+
+    <div style="text-align:left; margin-top:10px;">
+        <p style="font-size:14px; color:#4b5563; margin-bottom:8px;">
+            This tool helps you reflect on how you have been feeling <b>over the past week</b>.
+        </p>
+        <ul class="start-points">
+            <li>Answer a few simple questions about your recent feelings.</li>
+            <li>Get instant feedback for stress, anxiety, and depression levels.</li>
+            <li>Receive basic guidance on what your scores may mean.</li>
+        </ul>
+    </div>
+
+    <div class="summary-strip" style="margin-top:10px;">
+        <span class="summary-label">Check‑in info</span>
+        <span class="summary-text">
+             Takes only a few minutes and gives you a clear snapshot of your current stress, anxiety, and depression levels.
+        </span>
+    </div>
+
+    <form action="{{ url_for('start') }}" method="post" style="margin-top:18px;">
+        <button type="submit" class="btn primary">Begin Check‑in</button>
+    </form>
+
+    <p class="footer-note" style="margin-top:16px;">
+        This is an anonymous self‑assessment and does <b>not</b> replace professional diagnosis or treatment.
+    </p>
+    <p class="footer-note">
+        “Checking in with yourself is a sign of strength, not weakness.”
+    </p>
+</div>
+
+</body>
+</html>

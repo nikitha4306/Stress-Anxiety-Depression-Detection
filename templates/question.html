@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DASS-21 Adaptive Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-bg"></div>
+<div class="container card">
+    <div class="header">
+        <h1>DASS-21 Adaptive Test</h1>
+        <p class="subtitle">
+            Think about how often this was true for you in the <b>past week</b>.
+        </p>
+    </div>
+
+    <p class="footer-note" style="margin-bottom:8px;">
+        Answer based on your first impression. There are no right or wrong answers.
+    </p>
+
+    <h2 class="question-text">{{ question }}</h2>
+
+    <form method="post" class="question-form">
+        <input type="hidden" name="qid" value="{{ qid }}">
+        <div class="options">
+            {% for val, label in [
+                (0,'😌 Did not apply to me at all'),
+                (1,'🙂 Applied to me some of the time'),
+                (2,'😟 Applied to me a considerable degree'),
+                (3,'😣 Applied to me most of the time')
+            ] %}
+                <label class="option-tile">
+                    <input type="radio" name="score" value="{{ val }}" required>
+                    <span class="option-label">{{ label }}</span>
+                </label>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn primary">Next</button>
+    </form>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ progress }}%;"></div>
+        </div>
+        <span class="progress-text">{{ progress }}% complete</span>
+    </div>
+
+    <p class="footer-note">This screening is for awareness only and does not replace professional diagnosis.</p>
+</div>
+</body>
+</html>

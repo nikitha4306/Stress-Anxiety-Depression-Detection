@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Mental Health Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-bg"></div>
+<div class="container card">
+    <div class="header">
+        <h1>Your Mental Health Dashboard</h1>
+        <p class="subtitle">
+            A quick overview of your <b>stress, anxiety, and depression</b> levels based on your responses.
+        </p>
+    </div>
+
+    <div class="summary-strip">
+        <span class="summary-label">Summary</span>
+        <span class="summary-text">
+            This snapshot is only for self‑reflection. Higher levels suggest that talking to a professional may be helpful.
+        </span>
+    </div>
+
+    <div class="results">
+        {% for key, data in results.items() %}
+            <div class="result-item">
+                <h3>
+                    {% if key == "Stress" %}🧠{% elif key == "Anxiety" %}💭{% else %}💙{% endif %}
+                    {{ key }}
+                </h3>
+                <p class="level-label">{{ data.level }}</p>
+                <p class="level-desc">{{ data.tip }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="next-steps">
+    <h3>What you can do next</h3>
+    <p>
+        If any area shows Moderate, Severe, or Extremely Severe levels, it may be helpful to talk with a counselor,
+        doctor, or trusted mentor. For urgent or very intense feelings, please contact a local mental health service
+        or helpline as soon as possible.
+    </p>
+</div>
+
+
+    <a href="{{ url_for('index') }}" class="btn secondary" style="margin-top:18px;">New Check‑in</a>
+</div>
+</body>
+</html>
